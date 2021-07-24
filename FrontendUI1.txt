@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            fadein fadeout
+        </title>
+        <script type="text/Javascript">
+           var timerid=0;
+            var opacity=0;
+            function fadingout()
+            {
+                timerid = window.setInterval(hide,100);
+            }
+            function hide()
+            {
+                var img = document.getElementById("i1");
+                opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity"));
+                if(opacity>0)
+                {
+                    opacity = opacity - 0.1;
+                    img.style.opacity = opacity;
+                }
+                else
+                {
+                    window.clearInterval(timerid);
+                }
+            }
+            function fadingin()
+            {
+                timerid = window.setInterval(show,100);
+            }
+            function show()
+            {
+                var img = document.getElementById("i1");
+                opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity"));
+                if(opacity<1)
+                {
+                    opacity = opacity + 0.1;
+                    img.style.opacity = opacity;
+                }
+                else
+                {
+                    window.clearInterval(timerid);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <center><button onclick="fadingout()" id="b1" type="button">FADE OUT</button><br><br></center>
+        <center><img id="i1" src="images/heart.jfif" width="200"></center><br><br>
+        <center><button onclick="fadingin()" id="b2" type="button">FADE IN</button><br><br></center>
+    </body>
+</html>
